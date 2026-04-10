@@ -1,0 +1,87 @@
+name: Auto-sync Documentation
+
+# Este workflow mantiene sincronizada la documentación con los configs de agents
+# Se ejecuta automáticamente cuando cambian los configs y actualiza README.md
+
+on:
+  push:
+    branches:
+      - '**'  # Ejecutar en cualquier rama
+    paths:
+      # Solo ejecutar cuando cambien estos archivos
+      - 'agents/*/config.md'
+      - 'orchestator/**/*.md'
+      - 'communication/**/*.md'
+
+permissions:
+  contents: write  # Necesario para hacer commits
+
+jobs:
+  sync-docs:
+    # IMPORTANTE: El if debe ir DENTRO del job, NO en el on:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    name: Sincronizar Documentación
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch completo para poder hacer push
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Ejecutar script de sincronización
+        run: |
+          chmod +x scripts/sync-docs.py
+          python3 scripts/sync-docs.py
+      
+      - name: Verificar cambios
+        id: verify_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Se detectaron cambios en la documentación"
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No se detectaron cambios"
+          fi
+      
+      - name: Commit y push de cambios
+        if: steps.verify_changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add -A
+          
+          git commit -m "docs: auto-sync from agent configs [skip ci]
+          
+          Sincronización automática de documentación desde configs de agentes.
+          
+          Este commit fue generado automáticamente por el workflow auto-sync.
+          
+          Changes:
+          - Actualizada tabla de agentes en README.md
+          - Sincronizados triggers y roles desde configs"
+          
+          git push
+          
+          echo "✅ Cambios sincronizados y subidos automáticamente"
+      
+      - name: Resumen
+        run: |
+          echo "=== Resumen de Sincronización ==="
+          echo ""
+          if [[ "${{ steps.verify_changes.outputs.changes }}" == "true" ]]; then
+            echo "✅ Se detectaron cambios y se sincronizaron automáticamente"
+            echo ""
+            echo "Archivos actualizados:"
+            git diff --name-only HEAD~1
+          else
+            echo "✅ La documentación ya está sincronizada con los configs"
+          fi
