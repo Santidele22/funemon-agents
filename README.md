@@ -6,11 +6,24 @@
 
 Repositorio de **sub-agentes especializados** que el orquestador delega para ejecutar tareas específicas. Cada agente tiene sus propias skills, contexto y comportamiento definido.
 
+## Integración con funemon-ecosystem
+
+```
+funemon-ecosystem (CLI) → ~/.config/opencode/ (global) → proyecto local
+                                                        ↓
+                                              AGENTS.md + project-skills/
+                                                        ↓
+                                              OpenCode carga orquestador de funemon-agents
+                                                        ↓
+                                              Orquestador delega a sub-agentes
+```
+
 ## Estructura
 
 ```
 funemon-agents/
 ├── orchestator/        # Configuración del orquestador
+│   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
 │   ├── pm/            # Product Manager / Scrum
 │   ├── backend/       # Desarrollo backend
@@ -27,20 +40,20 @@ funemon-agents/
 | Agente | Rol | Triggers |
 |--------|-----|----------|
 | **PM** | Historias de usuario, sprints, priorización | "pm", "sprint", "historia", "backlog" |
-| **Backend** | Lógica de servidor, APIs, DB | "backend", "api", "server", "database" |
-| **Frontend** | UI/UX, interfaces | "frontend", "ui", "interface", "web" |
+| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node" |
+| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue" |
 | **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing" |
 | **Documentador** | Docs, README, API specs | "docs", "documentación", "readme" |
 | **Seguridad** | Reviews, auditorías | "security", "seguridad", "audit" |
 
 ## Uso
 
-El **orquestador** carga el config del sub-agente según la tarea y le delega. El sub-agente:
-1. Inicia sesión en Funemon (`funemon_memory_session_start`)
-2. Carga sus skills específicas
-3. Ejecuta la tarea
-4. Retorna resultado al orquestador
-5. Puede delegar a otros agentes si es necesario
+El orquestador se instala automáticamente con `funemon-ecosystem install-global`. Cuando OpenCode inicia una sesión:
+
+1. Carga el **orquestador SDD** de `~/.config/opencode/system-prompt/`
+2. Carga las **skills** de `~/.config/opencode/skills/`
+3. Puede usar **skills locales** de `project-skills/`
+4. Delega a **sub-agentes** según el contexto
 
 ## Comunicación
 
@@ -50,8 +63,15 @@ Los agentes se comunican mediante mensajes estructurados:
 
 ## Requisitos
 
-- Funemon instalado y funcionando
-- Ollama con modelo disponible (ej: llama3.2)
+- funemon-ecosystem instalado (`install-global`)
+- OpenCode instalado
+- (Opcional) Funemon para memoria persistente
+- (Opcional) Ollama con modelo disponible (ej: llama3.2)
+
+## Ver también
+
+- [funemon-ecosystem](../funemon-ecosystem/) - CLI del ecosistema
+- [funemon](../funemon/) - Sistema de memoria persistente
 
 ## Licencia
 
