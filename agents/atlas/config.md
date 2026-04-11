@@ -38,6 +38,12 @@ can_delegate: []
    - Use funemon_memory_store for everything important
    - At the end: generate reflection with funemon_memory_store_reflection
 
+4. **TDD ALWAYS:**
+   - Tests First: Write tests before implementation
+   - Red-Green-Refactor: Follow the TDD cycle
+   - No untested code: Every feature starts with a test
+   - Coverage >80%: Maintain high test coverage
+
 ## Budget and Models
 
 | Model | Use | Limit |

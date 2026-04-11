@@ -25,12 +25,12 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
-│   ├── atlas/         # Product Manager / Scrum
-│   ├── backend/       # Desarrollo backend
-│   ├── frontend/      # Desarrollo frontend
-│   ├── tester/        # Testing / QA
-│   ├── documentador/  # Documentación
-│   └── seguridad/     # Security review
+│   ├── magnus/         # Backend Developer
+│   ├── aurora/         # Frontend Developer
+│   ├── bruno/          # QA Engineer
+│   ├── almendra/       # Technical Writer
+│   ├── gabriela/       # Security Engineer
+│   └── atlas/          # Product Manager
 ├── templates/          # Templates de comunicación
 └── communication/     # Protocolo entre agentes
 ```
@@ -39,11 +39,12 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
-| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "calidad" |
-| **Documentador** | Docs, README, API specs | "docs", "documentación", "readme", "documentar", "api docs", "guía", "manual" |
-| **Seguridad** | Reviews, auditorías | "security", "seguridad", "vulnerabilidad", "audit", "secure" |
+| **Magnus** | Backend Developer | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Aurora** | Frontend Developer | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Bruno** | QA Engineer | "test", "qa", "coverage", "testing", "quality" |
+| **Almendra** | Technical Writer | "docs", "documentación", "readme", "documentar", "api docs", "guía", "manual" |
+| **Gabriela** | Security Engineer | "security", "seguridad", "vulnerabilidad", "audit", "secure" |
+| **ATLAS** | Product Manager | "sprint", "backlog", "user story", "story points", "planning", "prioridad", "velocity" |
 
 ## Uso
 
@@ -53,6 +54,16 @@ El orquestador se instala automáticamente con `funemon-ecosystem install-global
 2. Carga las **skills** de `~/.config/opencode/skills/`
 3. Puede usar **skills locales** de `project-skills/`
 4. Delega a **sub-agentes** según el contexto
+
+## 🧪 TDD - Test-Driven Development
+
+All agents follow TDD as a mandatory practice:
+
+- **Red**: Write failing test first
+- **Green**: Write minimal code to pass
+- **Refactor**: Improve design keeping tests green
+
+See [TDD Workflow](../funemon-ecosystem/templates/global/skills/tdd-workflow.md) for details.
 
 ## Comunicación
 
