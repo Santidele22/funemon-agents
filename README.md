@@ -25,12 +25,12 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
-│   ├── atlas/         # Product Manager / Scrum
-│   ├── backend/       # Desarrollo backend
-│   ├── frontend/      # Desarrollo frontend
-│   ├── tester/        # Testing / QA
-│   ├── documentador/  # Documentación
-│   └── seguridad/     # Security review
+│   ├── magnus/         # Backend Developer
+│   ├── aurora/         # Frontend Developer
+│   ├── bruno/          # QA Engineer
+│   ├── almendra/       # Technical Writer
+│   ├── gabriela/       # Security Engineer
+│   └── atlas/          # Product Manager
 ├── templates/          # Templates de comunicación
 └── communication/     # Protocolo entre agentes
 ```
@@ -39,11 +39,12 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
-| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "quality" |
-| **Documentador** | Docs, README, API specs | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
-| **Seguridad** | Reviews, auditorías | "security", "audit", "vulnerability", "vuln", "penetration" |
+| **Magnus** | Backend Developer | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Aurora** | Frontend Developer | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Bruno** | QA Engineer | "test", "qa", "coverage", "testing", "quality" |
+| **Almendra** | Technical Writer | "docs", "documentación", "readme", "documentar", "api docs", "guía", "manual" |
+| **Gabriela** | Security Engineer | "security", "seguridad", "vulnerabilidad", "audit", "secure" |
+| **ATLAS** | Product Manager | "sprint", "backlog", "user story", "story points", "planning", "prioridad", "velocity" |
 
 ## Uso
 
