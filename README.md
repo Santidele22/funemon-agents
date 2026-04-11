@@ -25,7 +25,7 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
-│   ├── pm/            # Product Manager / Scrum
+│   ├── atlas/         # Product Manager / Scrum
 │   ├── backend/       # Desarrollo backend
 │   ├── frontend/      # Desarrollo frontend
 │   ├── tester/        # Testing / QA
@@ -39,12 +39,11 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **PM** | Historias de usuario, sprints, priorización | "pm", "sprint", "historia", "backlog" |
-| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node" |
-| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue" |
-| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing" |
-| **Documentador** | Docs, README, API specs | "docs", "documentación", "readme" |
-| **Seguridad** | Reviews, auditorías | "security", "seguridad", "audit" |
+| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "calidad" |
+| **Documentador** | Docs, README, API specs | "docs", "documentación", "readme", "documentar", "api docs", "guía", "manual" |
+| **Seguridad** | Reviews, auditorías | "security", "seguridad", "vulnerabilidad", "audit", "secure" |
 
 ## Uso
 
