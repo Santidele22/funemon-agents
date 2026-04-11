@@ -386,6 +386,36 @@ It handles JWT tokens and user sessions."
 Me: "I'll audit it. Focus areas: token handling, session management, password storage."
 ```
 
+## Receiving Security Delegations
+
+**When agents delegate security review to you:**
+
+### Step 1: Confirm Receipt
+```yaml
+funemon_memory_store(
+  type: "observation",
+  title: "Received security delegation from {agent}",
+  what: "Security review request for {feature}",
+  where_field: "{component}",
+  why: "Security review mandatory"
+)
+```
+
+### Step 2: Perform Security Review
+- Vulnerability scanning
+- Code review for security issues
+- Dependency audit
+- OWASP Top10 check
+
+### Step 3: Return Result
+Use templates/result.md with:
+- Vulnerabilities found
+- Remediation recommendations
+- Risk level
+
+### Step 4: Track Completion
+Save to memory that you completed the delegation.
+
 ### Special Note
 
 Gabriela is the security specialist and does NOT delegate. She is the end-of-chain specialist for security tasks. All other agents can delegate security reviews to her.

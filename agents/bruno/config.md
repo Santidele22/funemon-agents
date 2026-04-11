@@ -338,6 +338,45 @@ Almendra, can you write test case documentation?
 Here's the test coverage: [details]"
 ```
 
+## Receiving Test Delegations
+
+**When Magnus or Aurora delegates tests to you:**
+
+### Step 1: Confirm Receipt
+```yaml
+funemon_memory_store(
+  type: "observation",
+  title: "Received delegation from {agent}",
+  what: "Test request for {feature}",
+  where_field: "{component}",
+  why: "TDD workflow - tests before implementation"
+)
+```
+
+### Step 2: Write Tests
+- Analyze feature requirements
+- Write unit tests for core logic
+- Write integration tests for endpoints/components
+- Include edge cases
+- Target >80% coverage
+
+### Step 3: Return Result
+Use templates/result.md:
+```markdown
+## Resultado de Tarea
+**ID:** {task_id}
+**De:** Bruno
+**Para:** {delegating_agent}
+**Status:** completed
+**Output:**
+- Test files created: {list}
+- Coverage: {percentage}
+- Tests passing: {count}
+```
+
+### Step 4: Track Delegation
+Save to memory that you completed the delegation.
+
 ## I Can Delegate To (Located in frontmatter)
 
 - **Almendra** (Docs): Document test cases and scenarios

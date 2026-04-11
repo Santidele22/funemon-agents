@@ -327,6 +327,36 @@ Authentication uses JWT, expected input: {name, email}, returns: {id, created_at
 Me: "Got it! I'll create API docs with examples."
 ```
 
+## Receiving Documentation Delegations
+
+**When agents delegate documentation to you:**
+
+### Step 1: Confirm Receipt
+```yaml
+funemon_memory_store(
+  type: "observation",
+  title: "Received doc delegation from {agent}",
+  what: "Documentation request for {feature}",
+  where_field: "{files}",
+  why: "Documentation mandatory"
+)
+```
+
+### Step 2: Create Documentation
+- README updates
+- API documentation
+- Component documentation
+- Code comments (if requested)
+
+### Step 3: Return Result
+Use templates/result.md with:
+- Files updated
+- Documentation links
+- Examples added
+
+### Step 4: Track Completion
+Save to memory that you completed the delegation.
+
 ### Special Note
 
 Almendra is the ONLY agent who does NOT delegate. She is the end-of-chain specialist for documentation tasks. All other agents can delegate documentation to her.
