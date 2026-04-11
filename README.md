@@ -39,11 +39,12 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
-| **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "quality" |
-| **Documentador** | Docs, README, API specs | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
-| **Seguridad** | Reviews, auditorías | "security", "audit", "vulnerability", "vuln", "penetration" |
+| **PM** | Historias de usuario, sprints, backlog, priorización MoSCoW | "sprint", "backlog", "user story", "story points", "planning", "prioridad", "velocity", "task", "kanban" |
+| **Backend** | APIs, lógica de servidor, bases de datos, Rust, Go, Node | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Frontend** | Interfaces UI/UX, React, Vue, Svelte, responsive, accessible | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Tester** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
+| **Documentador** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
+| **Seguridad** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "penetration" |
 
 ## Uso
 
