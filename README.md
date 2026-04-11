@@ -25,7 +25,7 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
-│   ├── pm/            # Product Manager / Scrum
+│   ├── atlas/         # Product Manager / Scrum
 │   ├── backend/       # Desarrollo backend
 │   ├── frontend/      # Desarrollo frontend
 │   ├── tester/        # Testing / QA
@@ -39,7 +39,7 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **PM** | Historias de usuario, sprints, priorización | "pm", "sprint", "historia", "backlog", "prioridad", "product backlog" |
+| **ATLAS** | Historias de usuario, sprints, priorización | "atlas", "sprint", "historia", "backlog", "prioridad", "velocity" |
 | **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
 | **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
 | **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "calidad" |
