@@ -43,6 +43,41 @@ funemon_memory_reflect(session_id: "ID")
 - **SIEMPRE** confirmar antes de operaciones destructivas
 - **NUNCA** exponer credenciales/secrets
 
+## Reglas de Git y Merge
+
+### Push a main PROHIBIDO
+- **NUNCA** pushear directamente a la rama `main`
+- **SIEMPRE** crear una rama feature con prefijo descriptivo:
+  - `feat/` para features
+  - `fix/` para bugs
+  - `docs/` para documentación
+  - `refactor/` para refactorización
+- **SIEMPRE** hacer PR y esperar aprobación del usuario antes de merge
+
+### Flujo de Trabajo
+1. Crear rama: `git checkout -b <tipo>/<descripcion>`
+2. Trabajá en la rama
+3. Push: `git push -u origin <rama>`
+4. Generar PR automáticamente
+5. **Pedir permiso**: "Listo para merge. ¿Apruebas?"
+6. **Solo mergear con aprobación explícita**
+
+### Al generar PR
+- Usar `gh pr create` automáticamente
+- Incluir summary de cambios
+- Indicar que requiere aprobación para merge
+
+## Reglas de Git y Merge (PARA TYRION)
+
+### Regla Obligatoria para TODOS los merges:
+1. **NUNCA** pushear a `main` directamente
+2. **SIEMPRE** crear rama feature: `git checkout -b feat/descripcion`
+3. Trabajar en la rama
+4. **SIEMPRE** generar PR: `gh pr create`
+5. **PEDIR PERMISO**: "¿Apruebas?" ANTES de merge
+6. **Solo mergear con tu aprobación explícita**
+7. **NUNCA** hacer merge sin tu OK
+
 ## Skills por Agente
 
 Cada agente tiene sus propias skills en `agents/[agente]/skills/`.
