@@ -1,33 +1,33 @@
-# Protocolo de Comunicación entre Agentes
+# Inter-Agent Communication Protocol
 
-## Visión General
+## Overview
 
-Los agentes de Funemon se comunican mediante mensajes estructurados. Este documento define el protocolo.
+Funemon agents communicate via structured messages. This document defines the protocol.
 
-## Flujo de Comunicación
+## Communication Flow
 
 ```
-Orquestador
+Orchestrator
     │
-    ├──(tarea)──▶ PM
+    ├──(task)──▶ PM
     │              │
-    │◀──(resultado)┤
+    │◀──(result)──┤
     │
-    ├──(tarea)──▶ Backend
+    ├──(task)──▶ Backend
     │              │
-    │◀──(resultado)┤
+    │◀──(result)──┤
     │
-    └──(tarea)──▶ Tester
+    └──(task)──▶ Tester
                    │
-                   └─(resultado)──▶ Orquestador
+                   └─(result)──▶ Orchestrator
 ```
 
-## Tipos de Mensaje
+## Message Types
 
-### 1. TASK (Tarea)
-Enviado cuando un agente delega trabajo a otro.
+### 1. TASK
+Sent when an agent delegates work to another.
 
-**Estructura:**
+**Structure:**
 ```json
 {
   "type": "task",
@@ -45,10 +45,10 @@ Enviado cuando un agente delega trabajo a otro.
 }
 ```
 
-### 2. RESULT (Resultado)
-Enviado cuando un agente completa una tarea.
+### 2. RESULT
+Sent when an agent completes a task.
 
-**Estructura:**
+**Structure:**
 ```json
 {
   "type": "result",
@@ -61,15 +61,15 @@ Enviado cuando un agente completa una tarea.
     "output": {...},
     "logs": [...],
     "next_actions": [...],
-    "delegate_to": ["seguridad"]
+    "delegate_to": ["security"]
   }
 }
 ```
 
 ### 3. ACK (Acknowledgment)
-Enviado para confirmar recepción de un mensaje.
+Sent to confirm receipt of a message.
 
-**Estructura:**
+**Structure:**
 ```json
 {
   "type": "ack",
@@ -80,32 +80,32 @@ Enviado para confirmar recepción de un mensaje.
 }
 ```
 
-## Reglas de Comunicación
+## Communication Rules
 
-### a) Todos los mensajes incluyen
-- `type`: TASK, RESULT, o ACK
-- `from`: Agente emisor
-- `to`: Agente receptor
-- `timestamp`: Cuándo se envió
+### a) All messages include
+- `type`: TASK, RESULT, or ACK
+- `from`: Sender agent
+- `to`: Receiver agent
+- `timestamp`: When sent
 
-### b) TASK debe incluir
-- `task_id`: ID único de la tarea
-- `deadline`: Cuándo debe completarse
-- `payload.description`: Qué hacer
-- `payload.success_criteria`: Cómo verificar
+### b) TASK must include
+- `task_id`: Unique task identifier
+- `deadline`: When it must be completed
+- `payload.description`: What to do
+- `payload.success_criteria`: How to verify
 
-### c) RESULT debe incluir
+### c) RESULT must include
 - `status`: completed, pending_approval, error
-- `payload.output`: Qué se produjo
-- `payload.logs`: Notas relevantes
-- `payload.next_actions`: Sugerencias
+- `payload.output`: What was produced
+- `payload.logs`: Relevant notes
+- `payload.next_actions`: Suggestions
 
-### d) Errores
-- Si un agente no puede procesar un TASK, debe retornar un RESULT con `status: error` y explicación
+### d) Errors
+- If an agent cannot process a TASK, it must return a RESULT with `status: error` and explanation
 
-## Ejemplo de Comunicación
+## Communication Examples
 
-### Paso 1: Orquestador → Backend
+### Step 1: Orchestrator → Backend
 ```json
 {
   "type": "task",
@@ -115,21 +115,21 @@ Enviado para confirmar recepción de un mensaje.
   "timestamp": "2026-04-09T10:00:00Z",
   "deadline": "2026-04-09T18:00:00Z",
   "payload": {
-    "description": "Implementar endpoint de login con JWT",
+    "description": "Implement JWT login endpoint",
     "context": {
-      "project": "mi-app",
-      "historia_usuario": "HU-001"
+      "project": "my-app",
+      "user_story": "US-001"
     },
     "success_criteria": [
-      "Endpoint /api/auth/login funcional",
-      "Genera JWT válido",
-      "Tests pasando"
+      "Endpoint /api/auth/login functional",
+      "Generates valid JWT",
+      "Tests passing"
     ]
   }
 }
 ```
 
-### Paso 2: Backend → Tester (delegación)
+### Step 2: Backend → Tester (delegation)
 ```json
 {
   "type": "task",
@@ -139,21 +139,21 @@ Enviado para confirmar recepción de un mensaje.
   "timestamp": "2026-04-09T12:00:00Z",
   "deadline": "2026-04-09T16:00:00Z",
   "payload": {
-    "description": "Escribir tests para endpoint de login",
+    "description": "Write tests for login endpoint",
     "context": {
       "endpoint": "/api/auth/login",
-      "tests_existentes": []
+      "existing_tests": []
     },
     "success_criteria": [
-      "Tests unitarios para auth",
-      "Tests de integración",
+      "Unit tests for auth",
+      "Integration tests",
       "Coverage > 80%"
     ]
   }
 }
 ```
 
-### Paso 3: Tester → Backend
+### Step 3: Tester → Backend
 ```json
 {
   "type": "result",
@@ -169,18 +169,18 @@ Enviado para confirmar recepción de un mensaje.
       "files": ["tests/auth_test.rs"]
     },
     "logs": [
-      "Mock de JWT funcionando",
-      "Tests de edge cases incluidos"
+      "JWT mock working",
+      "Edge case tests included"
     ],
     "next_actions": [
-      "Revisar tests con code review"
+      "Review tests with code review"
     ],
-    "delegate_to": ["seguridad"]
+    "delegate_to": ["security"]
   }
 }
 ```
 
-### Paso 4: Backend → Orquestador
+### Step 4: Backend → Orchestrator
 ```json
 {
   "type": "result",
@@ -196,25 +196,25 @@ Enviado para confirmar recepción de un mensaje.
       "security_review": "pending"
     },
     "logs": [
-      "JWT con expiration de 24h",
-      "Password hasheada con bcrypt"
+      "JWT with 24h expiration",
+      "Password hashed with bcrypt"
     ],
     "next_actions": [
-      "Delegar a seguridad para review"
+      "Delegate to security for review"
     ]
   }
 }
 ```
 
-## Timeout y Retry
+## Timeout and Retry
 
-- **Timeout**: Si un agente no responde en 30 min, re-enviar TASK
-- **Max retries**: 3 intentos
-- **Fallback**: Si todos los intentos fallan, reportar error al orquestador
+- **Timeout**: If an agent doesn't respond in 30 min, re-send TASK
+- **Max retries**: 3 attempts
+- **Fallback**: If all attempts fail, report error to orchestrator
 
 ## Logging
 
-Todos los mensajes deben ser guardados en Funemon para auditoría:
+All messages must be saved in Funemon for audit:
 ```python
 funemon_memory_store(
     type="observation",
@@ -223,8 +223,84 @@ funemon_memory_store(
 )
 ```
 
-## Herramientas
+## Language Rules
 
-Los agentes pueden usar las templates en `templates/`:
-- `task.md`: Para crear tareas
-- `result.md`: Para retornar resultados
+**CRITICAL:** All inter-agent communication MUST follow these language rules:
+
+### 1. Agent-to-Agent: ENGLISH
+
+All Task templates must be in English.
+All Result templates must be in English.
+All communication between Magnus, Bruno, Aurora, Almendra, Gabriela, ATLAS, Tyrion must be in English.
+
+**Example:**
+```json
+{
+  "type": "task",
+  "task_id": "task-001",
+  "from": "magnus",
+  "to": "bruno",
+  "payload": {
+    "description": "Write unit tests for authentication API",
+    "context": {
+      "endpoint": "/api/auth/login"
+    },
+    "success_criteria": [
+      "Tests pass",
+      "Coverage > 80%"
+    ]
+  }
+}
+```
+
+### 2. Agent-to-User (Santi): SPANISH
+
+All explanations to Santi must be in Spanish.
+All status reports to Santi must be in Spanish.
+All approval requests to Santi must be in Spanish.
+
+**Example:**
+```markdown
+## Estado de la Tarea
+
+**Status:** Completado
+
+He terminado de implementar el endpoint de autenticación.
+¿Necesitas que haga algún cambio antes de crear el PR?
+```
+
+### 3. Templates: ENGLISH Only
+
+- `task.md` template: English
+- `result.md` template: English
+- `delegation-memory.md` template: English
+
+### 4. Memory: Mixed
+
+- Keys: English
+- Values: Context-dependent (English for technical, Spanish for user-facing)
+
+```yaml
+funemon_memory_store(
+  type: "plan",
+  title: "Delegation: Magnus → Bruno",  # English
+  what: "Write tests for auth API",       # English
+  where_field: "src/api/auth.rs",         # English
+  learned: "User requested OAuth support" # Can be Spanish for user context
+)
+```
+
+### Why These Rules?
+
+- **English** standardizes technical communication between agents
+- **Spanish** provides natural communication with Santi
+- This prevents confusion and ensures consistency across the team
+
+---
+
+## Tools
+
+Agents can use templates in `templates/`:
+- `task.md`: To create tasks
+- `result.md`: To return results
+- `delegation-memory.md`: To track delegations in memory
