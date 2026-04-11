@@ -54,6 +54,16 @@ El orquestador se instala automáticamente con `funemon-ecosystem install-global
 3. Puede usar **skills locales** de `project-skills/`
 4. Delega a **sub-agentes** según el contexto
 
+## 🧪 TDD - Test-Driven Development
+
+All agents follow TDD as a mandatory practice:
+
+- **Red**: Write failing test first
+- **Green**: Write minimal code to pass
+- **Refactor**: Improve design keeping tests green
+
+See [TDD Workflow](../funemon-ecosystem/templates/global/skills/tdd-workflow.md) for details.
+
 ## Comunicación
 
 Los agentes se comunican mediante mensajes estructurados:
