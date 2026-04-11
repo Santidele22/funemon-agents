@@ -41,9 +41,9 @@ funemon-agents/
 |--------|-----|----------|
 | **Backend** | Lógica de servidor, APIs, DB, Rust, Node | "backend", "api", "server", "database", "rust", "node", "python" |
 | **Frontend** | UI/UX, interfaces, React, Vue | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "calidad" |
-| **Documentador** | Docs, README, API specs | "docs", "documentación", "readme", "documentar", "api docs", "guía", "manual" |
-| **Seguridad** | Reviews, auditorías | "security", "seguridad", "vulnerabilidad", "audit", "secure" |
+| **Tester** | Tests, QA, coverage | "test", "qa", "coverage", "testing", "quality" |
+| **Documentador** | Docs, README, API specs | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
+| **Seguridad** | Reviews, auditorías | "security", "audit", "vulnerability", "vuln", "penetration" |
 
 ## Uso
 
