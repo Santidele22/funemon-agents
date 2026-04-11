@@ -26,7 +26,7 @@ ORCHESTRATOR_FILE = PROJECT_ROOT / "orchestator" / "config.md"
 
 # Mapeo de nombres de personajes a roles para el README
 NAME_TO_ROLE_MAP = {
-    'pm': 'PM',
+    'atlas': 'PM',
     'magnus': 'Backend',
     'aurora': 'Frontend',
     'bruno': 'Tester',
@@ -35,16 +35,16 @@ NAME_TO_ROLE_MAP = {
 }
 
 # Orden de agentes en la tabla del README
-AGENT_ORDER = ['pm', 'magnus', 'aurora', 'bruno', 'almendra', 'gabriela']
+AGENT_ORDER = ['atlas', 'magnus', 'aurora', 'bruno', 'almendra', 'gabriela']
 
 # Descripciones cortas para el README (más legibles que el role completo)
 ROLE_SHORT_DESCRIPTIONS = {
-    'PM': 'Historias de usuario, sprints, priorización',
-    'Backend': 'Lógica de servidor, APIs, DB, Rust, Node',
-    'Frontend': 'UI/UX, interfaces, React, Vue',
-    'Tester': 'Tests, QA, coverage',
-    'Documentador': 'Docs, README, API specs',
-    'Seguridad': 'Reviews, auditorías'
+    'PM': 'Historias de usuario, sprints, backlog, priorización MoSCoW',
+    'Backend': 'APIs, lógica de servidor, bases de datos, Rust, Go, Node',
+    'Frontend': 'Interfaces UI/UX, React, Vue, Svelte, responsive, accessible',
+    'Tester': 'Tests, QA, coverage, unit, integration, E2E',
+    'Documentador': 'Docs, README, API specs, guías técnicas',
+    'Seguridad': 'Reviews, auditorías, vulnerabilidades, OWASP'
 }
 
 
