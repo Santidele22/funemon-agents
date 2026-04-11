@@ -43,40 +43,60 @@ funemon_memory_reflect(session_id: "ID")
 - **SIEMPRE** confirmar antes de operaciones destructivas
 - **NUNCA** exponer credenciales/secrets
 
-## Reglas de Git y Merge
+## Reglas de Git y Merge - CADA AGENTE ES RESPONSABLE COMPLETO
+
+**IMPORTANTE:** Cada agente maneja TODO su flujo de git de forma autónoma. El orquestador (Tyrion) NO interviene en git.
+
+### FlujoObligatorio para TODOS los agentes:
+
+1. **Crear rama:** `git checkout -b <tipo>/<descripcion-corta>`
+2. **Commits pequeños:** Un cambio lógico = un commit
+3. **Push al terminar:** `git push -u origin <rama>`
+4. **Crear PR:** `gh pr create`
+5. **Esperar validación del usuario** antes de merge
+
+**Tipos de rama:** feat/, fix/, docs/, refactor/, test/
 
 ### Push a main PROHIBIDO
 - **NUNCA** pushear directamente a la rama `main`
-- **SIEMPRE** crear una rama feature con prefijo descriptivo:
-  - `feat/` para features
-  - `fix/` para bugs
-  - `docs/` para documentación
-  - `refactor/` para refactorización
+- **SIEMPRE** crear una rama feature con prefijo descriptivo
 - **SIEMPRE** hacer PR y esperar aprobación del usuario antes de merge
 
-### Flujo de Trabajo
-1. Crear rama: `git checkout -b <tipo>/<descripcion>`
-2. Trabajá en la rama
-3. Push: `git push -u origin <rama>`
-4. Generar PR automáticamente
-5. **Pedir permiso**: "Listo para merge. ¿Apruebas?"
-6. **Solo mergear con aprobación explícita**
+### Flujo de Trabajo Completo
+```bash
+# 1. El agente crea su rama
+git checkout -b docs/nueva-documentacion
+
+# 2. Commits pequeños por cambio lógico
+git add archivo1.md
+git commit -m "docs: actualiza sección X"
+git add archivo2.md
+git commit -m "docs: agrega sección Y"
+
+# 3. Push al terminar
+git push -u origin docs/nueva-documentacion
+
+# 4. Crear PR automáticamente
+gh pr create --title "docs: descripción del cambio" --body "$(cat <<'EOF'
+## Summary
+- Cambio 1
+- Cambio 2
+EOF
+)"
+
+# 5. Informar al usuario
+# "PR creado. Esperando tu validación para merge."
+```
+
+### Reglas de Merge
+- **Solo el usuario (Santi) hace merge**
+- El agente espera aprobación explícita
+- Sin aprobación = sin merge
 
 ### Al generar PR
 - Usar `gh pr create` automáticamente
 - Incluir summary de cambios
 - Indicar que requiere aprobación para merge
-
-## Reglas de Git y Merge (PARA TYRION)
-
-### Regla Obligatoria para TODOS los merges:
-1. **NUNCA** pushear a `main` directamente
-2. **SIEMPRE** crear rama feature: `git checkout -b feat/descripcion`
-3. Trabajar en la rama
-4. **SIEMPRE** generar PR: `gh pr create`
-5. **PEDIR PERMISO**: "¿Apruebas?" ANTES de merge
-6. **Solo mergear con tu aprobación explícita**
-7. **NUNCA** hacer merge sin tu OK
 
 ## Skills por Agente
 
