@@ -43,6 +43,65 @@ funemon_memory_reflect(session_id: "ID")
 - **SIEMPRE** confirmar antes de operaciones destructivas
 - **NUNCA** exponer credenciales/secrets
 
+## Reglas del Orquestador (Tyrion)
+
+**IMPORTANTE:** El orquestador también tiene reglas que los agentes deben conocer:
+
+### Regla #1: El Orquestador NO Escribe Documentación
+
+Tyrion NUNCA escribe documentación directamente:
+- NO crea README.md
+- NO escribe guías
+- NO genera documentación de APIs
+- **SIEMPRE** delegar a Almendra cuando se necesita documentación
+
+### Regla #2: Git Workflow ES OBLIGATORIO
+
+**TODOS los cambios en este repositorio DEBEN seguir Git Workflow:**
+
+```yaml
+Flujo Git - OBLIGATORIO:
+1. Crear rama: git checkout -b <type>/<descripcion-corta>
+2. Commits pequeños: un cambio lógico = un commit
+3. Push al terminar: git push -u origin <rama>
+4. Crear PR: gh pr create
+5. ESPERAR validación del usuario
+6. SOLO el usuario hace merge
+
+Tipos de rama:
+- feat/ → nueva feature
+- fix/ → bug fix
+- docs/ → documentación
+- refactor/ → refactoring
+- test/ → tests
+- config/ → configuración del agente
+```
+
+**PROHIBICIONES:**
+- **NUNCA** pushear directamente a main
+- **NUNCA** hacer push --force
+- **NUNCA** hacer reset --hard
+
+### Regla #3: Actualizar Repositorio Constantemente
+
+**IMPORTANT:** Este repositorio (funemon-agents) debe mantenerse actualizado:
+- Cada cambio significativo → hacer commit
+- Cada sesión de trabajo → hacer push
+- Mantener la rama main actualizada con los últimos cambios
+- Si hay cambios en main → hacer pull antes de empezar a trabajar
+
+```bash
+# Antes de empezar:
+git pull origin main
+
+# Después de cambios:
+git push origin <rama>
+
+# Verificar estado:
+git status
+git log --oneline -5
+```
+
 ## Reglas de Delegación - IRRENUNCIABLES
 
 **CRÍTICO:** Estas reglas son IRRENUNCIABLES. Todos los agentes DEBEN seguirlas.
