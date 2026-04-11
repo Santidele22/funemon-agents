@@ -43,6 +43,149 @@ funemon_memory_reflect(session_id: "ID")
 - **SIEMPRE** confirmar antes de operaciones destructivas
 - **NUNCA** exponer credenciales/secrets
 
+## Reglas de Delegación - IRRENUNCIABLES
+
+**CRÍTICO:** Estas reglas son IRRENUNCIABLES. Todos los agentes DEBEN seguirlas.
+
+### Regla de Hierro #6: DELEGAR TESTS A BRUNO ANTES DE IMPLEMENTAR
+
+**Backend y Frontend: SIEMPRE delegar tests a Bruno ANTES de escribir código.**
+
+```yaml
+Flujo Obligatorio:
+1. Magnus/Aurora recibe tarea
+2. ANTES de implementar:
+   - Crear Task para Bruno usando templates/task.md
+   - Incluir: feature description, acceptance criteria, edge cases
+   - Guardar delegación: funemon_memory_store(type: "plan")
+   - ESPERAR Result de Bruno con tests
+3. Bruno escribe tests y retorna coverage
+4. Magnus/Aurora implementa para pasar tests
+5. Si tests fallan → Fix código
+6. Si tests pasan → Continuar
+```
+
+**NUNCA escribir código sin tests de Bruno.**
+
+### Regla de Hierro #7: DELEGAR DOCS A ALMENDRA CUANDO ES NECESARIO
+
+**Todos los agentes: Delegar documentación a Almendra cuando se necesite.**
+
+```yaml
+Cuándo delegar docs:
+- API endpoints creados → Delegar docs a Almendra
+- Componentes de UI nuevos → Delegar docs a Almendra
+- Cambios importantes en arquitectura → Delegar docs a Almendra
+```
+
+### Regla de Hierro #8: DELEGAR SECURITY A GABRIELA CUANDO ES NECESARIO
+
+**Todos los agentes: Delegar security review a Gabriela cuando sea crítico.**
+
+```yaml
+Cuándo delegar security:
+- Autenticación/Autorización → Delegar security a Gabriela
+- Manejo de datos sensibles → Delegar security a Gabriela
+- APIs expuestas públicamente → Delegar security a Gabriela
+```
+
+### Regla de Hierro #9: GUARDAR CADA DELEGACIÓN EN FUNEMON MEMORY
+
+**Todos los agentes: CADA delegación DEBE guardarse en memoria.**
+
+```yaml
+funemon_memory_store(
+  type: "plan",
+  title: "Delegación: {de} → {a}",
+  what: "{descripción_de_tarea}",
+  where_field: "{archivo_o_componente}",
+  why: "{razón_de_delegación}"
+)
+```
+
+### Regla de Hierro #10: USAR TEMPLATES TASK/RESULT PARA COMUNICACIÓN INTER-AGENTE
+
+**Todos los agentes: Usar templates para comunicación.**
+
+```yaml
+Task Template: /templates/task.md
+  - ID, From, To, Timestamp, Deadline
+  - Description, Context, Success Criteria
+  - Resources, Additional Notes
+
+Result Template: /templates/result.md
+  - ID, From, To, Status
+  - Output, Logs, Next Actions
+  - Dependencies
+```
+
+### Regla de Hierro #11: COMUNICACIÓN EN INGLÉS ENTRE AGENTES
+
+**Todos los agentes: Comunicación inter-agente en INGLÉS.**
+
+```yaml
+Agentes → Agentes: INGLÉS
+  - Task templates: English
+  - Result templates: English
+  - Delegation messages: English
+
+Agentes → Santi (Usuario): ESPAÑOL
+  - Explicaciones: Español
+  - Status reports: Español
+  - Aprobaciones: Español
+```
+
+### Regla de Hierro #12: GIT WORKFLOW OBLIGATORIO
+
+**Todos los agentes: Seguir Git workflow siempre.**
+
+```yaml
+Flujo Git Obligatorio:
+1. Crear rama: git checkout -b <type>/<description>
+2. Commits pequeños: un commit = un cambio lógico
+3. Push: git push -u origin <branch>
+4. PR: gh pr create
+5. ESPERAR aprobación de Santi
+6. SOLO Santi hace merge
+
+Tipos de rama:
+- feat/ → nueva feature
+- fix/ → bug fix
+- docs/ → documentación
+- refactor/ → refactoring
+- test/ → tests
+```
+
+---
+
+## Debugging Delegation Problems
+
+Si un agente no está delegando correctamente:
+
+1. Verificar que el agente siguió Iron Rules #6-#12
+2. Verificar que usó templates/task.md y templates/result.md
+3. Verificar que guardó delegación en Funemon memory
+4. Verificar que comunicó en inglés con otros agentes
+
+---
+
+## Resumen de Iron Rules
+
+| # | Regla | Descripción |
+|---|-------|-------------|
+| 1 | Git Workflow | Crear branch, commits pequeños, PR |
+| 2 | Orquestador NO escribe código | Tyrion NO implementa |
+| 3 | Usuario decide lo importante | Features, cambios grandes |
+| 4 | Memoria SIEMPRE | Usar Funemon en cada sesión |
+| 5 | TDD SIEMPRE | Tests antes de código |
+| 6 | Delegar tests a Bruno | ANTES de implementar |
+| 7 | Delegar docs a Almendra | Cuando es necesario |
+| 8 | Delegar security a Gabriela | Cuando es crítico |
+| 9 | Guardar delegaciones en memory | CADA delegación |
+| 10 | Usar templates Task/Result | Para comunicación |
+| 11 | Inglés entre agentes | Español con Santi |
+| 12 | Git Workflow obligatorio | Branch → PR → Merge |
+
 ## Reglas de Git y Merge - CADA AGENTE ES RESPONSABLE COMPLETO
 
 **IMPORTANTE:** Cada agente maneja TODO su flujo de git de forma autónoma. El orquestador (Tyrion) NO interviene en git.
