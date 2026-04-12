@@ -41,13 +41,12 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **Iris** | Diseño visual, marca, paleta de colores, tipografía, design systems | "design", "branding", "colors", "palette", "typography", "logo", "visual", "brand", "style guide" |
-| **ATLAS** | Historias de usuario, sprints, backlog, priorización MoSCoW | "pm", "sprint", "historia", "backlog", "task", "planning", "prioridad" |
-| **Magnus** | APIs, lógica de servidor, bases de datos, Rust, Go, Node | "backend", "api", "server", "database", "rust", "node", "python" |
-| **Aurora** | Interfaces UI/UX, React, Vue, Svelte, responsive, accessible | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Bruno** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
-| **Almendra** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide" |
-| **Gabriela** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "seguridad" |
+| **PM** | Historias de usuario, sprints, backlog, priorización MoSCoW | "sprint", "backlog", "user story", "story points", "planning", "prioridad", "velocity", "task", "kanban" |
+| **Backend** | APIs, lógica de servidor, bases de datos, Rust, Go, Node | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Frontend** | Interfaces UI/UX, React, Vue, Svelte, responsive, accessible | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Tester** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
+| **Documentador** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
+| **Seguridad** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "penetration" |
 
 ## Flujo de Trabajo
 
