@@ -25,13 +25,15 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
+│   ├── iris/           # Design Lead (diseño visual, marca, colores)
+│   ├── atlas/          # Product Manager (scrum, historias, backlog)
 │   ├── magnus/         # Backend Developer
 │   ├── aurora/         # Frontend Developer
 │   ├── bruno/          # QA Engineer
 │   ├── almendra/       # Technical Writer
-│   ├── gabriela/       # Security Engineer
-│   └── atlas/          # Product Manager
+│   └── gabriela/       # Security Engineer
 ├── templates/          # Templates de comunicación
+├── skills/             # Skills globales del ecosistema
 └── communication/     # Protocolo entre agentes
 ```
 
@@ -45,6 +47,26 @@ funemon-agents/
 | **Tester** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
 | **Documentador** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
 | **Seguridad** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "penetration" |
+
+## Flujo de Trabajo
+
+```
+Usuario → Tyrion (orquestador)
+           ↓
+       ATLAS (organiza tareas)
+           ↓
+       Tyrion (delega)
+           ↓
+    ┌─────┴─────┐
+    ↓           ↓
+  Iris    Magnus/Aurora/Bruno/Gabriela
+(diseño)    (implementación)
+    ↓
+  Aurora
+(frontend)
+```
+
+**Regla crítica:** Iris SIEMPRE se consulta antes de Aurora para tareas de frontend.
 
 ## Uso
 
@@ -70,6 +92,16 @@ See [TDD Workflow](../funemon-ecosystem/templates/global/skills/tdd-workflow.md)
 Los agentes se comunican mediante mensajes estructurados:
 - **Tarea**: `templates/task.md`
 - **Resultado**: `templates/result.md`
+
+## Actualización Automática de Documentación
+
+La documentación se mantiene actualizada automáticamente mediante la skill `docs-auto-update`. Esta skill:
+
+- Detecta cambios importantes (nuevas features, breaking changes, arquitectura)
+- Actualiza automáticamente README.md y CHANGELOG.md
+- Se activa cuando se detectan commits con convencionales commits
+
+Ver [docs-auto-update skill](skills/docs-auto-update.md) para más detalles.
 
 ## Requisitos
 

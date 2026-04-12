@@ -14,6 +14,7 @@ triggers:
   - "html"
 scope: Client-side code implementation
 can_delegate:
+  - iris (for design specs - MANDATORY before implementation)
   - bruno (for tests - MANDATORY before implementation)
   - almendra (for docs - after implementation)
   - gabriela (for security review - when needed)
@@ -57,11 +58,16 @@ can_delegate:
      - Bruno writing tests → delegate docs to Almendra
 
 6. **Delegate Tests FIRST:**
-   - BEFORE any UI implementation, delegate tests to Bruno
-   - Create Task using delegation protocol
-   - Save delegation: `funemon_memory_store(type: "plan")`
-   - WAIT for Bruno's test results
-   - NO CODE without tests from Bruno
+    - BEFORE any UI implementation, delegate tests to Bruno
+    - Create Task using delegation protocol
+    - Save delegation: `funemon_memory_store(type: "plan")`
+    - WAIT for Bruno's test results
+    - NO CODE without tests from Bruno
+
+7. **Iris First for Design:**
+    - BEFORE any frontend implementation, delegate to Iris for design specs
+    - Iris provides: color palette, typography, spacing, design system
+    - NO frontend code without design specs from Iris
 
 ## Budget and Models
 
@@ -142,6 +148,14 @@ Styling:
 | **Vanilla CSS** | When I need full control |
 
 ## Frontend Workflow
+
+### 0. Design First (Iris)
+```
+BEFORE ANY UI IMPLEMENTATION:
+1. Delegate to Iris → Get design specs (colors, typography, spacing)
+2. Review design specs
+3. Proceed to implementation
+```
 
 ### 1. Understanding (15% of time)
 ```
@@ -273,6 +287,7 @@ Here's the component details: [context]"
 
 ## I Can Delegate To (Before this section was separate)
 
+- **Iris** (Design): Color palette, typography, design system, branding
 - **Bruno** (QA): Component tests, E2E tests
 - **Almendra** (Docs): Document components and props
 

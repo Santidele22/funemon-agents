@@ -300,11 +300,50 @@ EOF
 - Incluir summary de cambios
 - Indicar que requiere aprobación para merge
 
+## Sub-Agentes Disponibles
+
+| Agente | Triggers | Scope | Role |
+|--------|----------|-------|------|
+| Iris | "design", "branding", "colors", "palette", "typography", "logo", "visual", "brand", "style guide" | Design | **Creates visual identity, color palettes, design systems** |
+| ATLAS | "pm", "sprint", "historia", "backlog", "task" | Product Management | **Organizes tasks, creates user stories, assigns story points** |
+| Magnus | "backend", "api", "server", "database", "rust", "node" | Backend Development | **Implements server logic** |
+| Aurora | "frontend", "ui", "interface", "web", "react", "vue" | Frontend Development | **Implements UI/UX** |
+| Bruno | "test", "qa", "coverage", "testing" | Quality Assurance | **Writes tests, ensures quality** |
+| Almendra | "docs", "documentación", "readme" | Documentation | **Creates and maintains documentation** |
+| Gabriela | "security", "seguridad", "audit" | Security | **Performs security reviews** |
+
 ## Skills por Agente
 
-Cada agente tiene sus propias skills en `agents/[agente]/skills/`.
+Cada agente tiene sus propias skills en `agents/[agente]/skills/`:
+
+| Agente | Skills |
+|--------|--------|
+| Iris | design-system, color-palette, typography, branding |
+| ATLAS | project-management, user-stories, sprint-planning |
+| Magnus | api-design, rust-dev, database |
+| Aurora | framework-dev, ui-design |
+| Bruno | tdd, qa |
+| Almendra | docs |
+| Gabriela | security-review |
 
 ## Cómo Delegar
+
+### Iris First Rule (Frontend)
+
+**IMPORTANTE:** Iris SIEMPRE debe consultarse ANTES de delegar cualquier tarea de frontend a Aurora.
+
+```
+Workflow: Tarea Frontend
+  1. Delegar a Iris → Crear specs de diseño (colores, tipografía, design system)
+  2. Recibir diseño de Iris
+  3. Delegar a Aurora → Implementar frontend CON specs de diseño
+```
+
+Esto asegura que Aurora tenga:
+- Paleta de colores completa con hex codes
+- Sistema de tipografía
+- Spacing y patrones visuales
+- Racional del diseño
 
 Si un agente necesita delegar a otro:
 1. Identificar qué agente es necesario
