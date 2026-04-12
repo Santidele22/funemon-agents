@@ -25,13 +25,15 @@ funemon-agents/
 ├── orchestator/        # Configuración del orquestador
 │   └── config.md       # SDD Orchestrator completo
 ├── agents/             # Sub-agentes especializados
+│   ├── iris/           # Design Lead (diseño visual, marca, colores)
+│   ├── atlas/          # Product Manager (scrum, historias, backlog)
 │   ├── magnus/         # Backend Developer
 │   ├── aurora/         # Frontend Developer
 │   ├── bruno/          # QA Engineer
 │   ├── almendra/       # Technical Writer
-│   ├── gabriela/       # Security Engineer
-│   └── atlas/          # Product Manager
+│   └── gabriela/       # Security Engineer
 ├── templates/          # Templates de comunicación
+├── skills/             # Skills globales del ecosistema
 └── communication/     # Protocolo entre agentes
 ```
 
@@ -39,12 +41,33 @@ funemon-agents/
 
 | Agente | Rol | Triggers |
 |--------|-----|----------|
-| **PM** | Historias de usuario, sprints, backlog, priorización MoSCoW | "sprint", "backlog", "user story", "story points", "planning", "prioridad", "velocity", "task", "kanban" |
-| **Backend** | APIs, lógica de servidor, bases de datos, Rust, Go, Node | "backend", "api", "server", "database", "rust", "node", "python" |
-| **Frontend** | Interfaces UI/UX, React, Vue, Svelte, responsive, accessible | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
-| **Tester** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
-| **Documentador** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide", "manual" |
-| **Seguridad** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "penetration" |
+| **Iris** | Diseño visual, marca, paleta de colores, tipografía, design systems | "design", "branding", "colors", "palette", "typography", "logo", "visual", "brand", "style guide" |
+| **ATLAS** | Historias de usuario, sprints, backlog, priorización MoSCoW | "pm", "sprint", "historia", "backlog", "task", "planning", "prioridad" |
+| **Magnus** | APIs, lógica de servidor, bases de datos, Rust, Go, Node | "backend", "api", "server", "database", "rust", "node", "python" |
+| **Aurora** | Interfaces UI/UX, React, Vue, Svelte, responsive, accessible | "frontend", "ui", "interface", "web", "react", "vue", "svelte", "css", "html" |
+| **Bruno** | Tests, QA, coverage, unit, integration, E2E | "test", "qa", "coverage", "testing", "quality" |
+| **Almendra** | Docs, README, API specs, guías técnicas | "docs", "documentation", "readme", "document", "api docs", "guide" |
+| **Gabriela** | Reviews, auditorías, vulnerabilidades, OWASP | "security", "audit", "vulnerability", "vuln", "seguridad" |
+
+## Flujo de Trabajo
+
+```
+Usuario → Tyrion (orquestador)
+           ↓
+       ATLAS (organiza tareas)
+           ↓
+       Tyrion (delega)
+           ↓
+    ┌─────┴─────┐
+    ↓           ↓
+  Iris    Magnus/Aurora/Bruno/Gabriela
+(diseño)    (implementación)
+    ↓
+  Aurora
+(frontend)
+```
+
+**Regla crítica:** Iris SIEMPRE se consulta antes de Aurora para tareas de frontend.
 
 ## Uso
 
@@ -70,6 +93,16 @@ See [TDD Workflow](../funemon-ecosystem/templates/global/skills/tdd-workflow.md)
 Los agentes se comunican mediante mensajes estructurados:
 - **Tarea**: `templates/task.md`
 - **Resultado**: `templates/result.md`
+
+## Actualización Automática de Documentación
+
+La documentación se mantiene actualizada automáticamente mediante la skill `docs-auto-update`. Esta skill:
+
+- Detecta cambios importantes (nuevas features, breaking changes, arquitectura)
+- Actualiza automáticamente README.md y CHANGELOG.md
+- Se activa cuando se detectan commits con convencionales commits
+
+Ver [docs-auto-update skill](skills/docs-auto-update.md) para más detalles.
 
 ## Requisitos
 
