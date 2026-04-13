@@ -106,10 +106,13 @@ Ver [docs-auto-update skill](skills/docs-auto-update.md) para más detalles.
 
 ## Requisitos
 
+- **Rust 1.75+** (recomendado 1.85+ para mejor compatibilidad con dependencias)
 - funemon-ecosystem instalado (`install-global`)
 - OpenCode instalado
 - (Opcional) Funemon para memoria persistente
 - (Opcional) Ollama con modelo disponible (ej: llama3.2)
+
+> ⚠️ **Nota sobre compatibilidad de Rust**: Si tienes una versión antigua de Rust (< 1.75), es posible que encuentres errores con dependencias como `clap_lex` o `anstyle-query`. Ver [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) para más detalles.
 
 ## Ver también
 
