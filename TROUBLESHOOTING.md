@@ -2,6 +2,55 @@
 
 Este documento contiene soluciones a problemas comunes durante la instalación y uso de Funemon Agents.
 
+## Build Issues
+
+### OpenSSL Not Found
+
+Si ves el error:
+```
+Could not find openssl via pkg-config:
+Package 'openssl', required by 'virtual:world', not found
+```
+
+**Causa:**
+El sistema no tiene instalados los paquetes de desarrollo de OpenSSL necesarios para compilar dependencias como `native-tls` o `openssl-sys`.
+
+**Solución:**
+
+Instala los paquetes de desarrollo de OpenSSL según tu sistema operativo:
+
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install libssl-dev pkg-config
+
+# Fedora/RHEL
+sudo dnf install openssl-devel pkg-config
+
+# macOS
+brew install openssl pkg-config
+
+# Arch Linux
+sudo pacman -S openssl pkg-config
+```
+
+Después de instalar, vuelve a ejecutar el instalador o compilar:
+
+```bash
+# Si usas el instalador del ecosystem
+funemon-ecosystem install-global
+
+# Si compilas manualmente
+cargo build --release
+```
+
+**Nota para macOS:**
+Si después de instalar siguen habiendo problemas, configura las variables de entorno:
+```bash
+export OPENSSL_DIR=/usr/local/opt/openssl
+export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+```
+
 ## Rust Compatibility Issues
 
 ### Error: "feature `edition2024` is required"
