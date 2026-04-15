@@ -22,7 +22,9 @@ I am the complete autonomy workflow for work sessions. I am ALWAYS active at the
 - Keep the user informed of progress
 
 ### 4. Reflect (on close)
-- Generate reflection (`funemon_memory_reflect`)
+- Generate structured reflection using your LLM
+- Format as JSON with fields: content, type, importance, level, source_summary
+- Store it: `funemon_memory_store_reflection(session_id, content_json, agent_name)`
 - Summarize learnings
 - Suggest next steps
 

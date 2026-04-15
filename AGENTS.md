@@ -33,7 +33,20 @@ Durante la tarea:
 
 Al finalizar:
 ```
-funemon_memory_reflect(session_id: "ID")
+1. Generar reflexión usando el LLM del agente
+2. Estructurar como JSON con 5 campos requeridos
+3. Guardar: funemon_memory_store_reflection(session_id: "ID", content_json, agent_name: "agente")
+```
+
+**Formato JSON requerido**:
+```json
+{
+  "content": "Resumen de la reflexión",
+  "type": "pattern | principle | warning",
+  "importance": 0.0-1.0,
+  "level": "Fact | Pattern | Principle",
+  "source_summary": "Breve descripción de la sesión"
+}
 ```
 
 ## Reglas de Seguridad
