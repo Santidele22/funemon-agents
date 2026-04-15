@@ -77,7 +77,8 @@ During SDD:
 - Resolving bug → save as type: "error"
 
 When closing SDD:
-- `funemon_memory_reflect(session_id)`
+- Generate structured reflection as JSON: `{content, type, importance, level, source_summary}`
+- Store: `funemon_memory_store_reflection(session_id, content_json, agent_name)`
 
 ## Triggers
 - "spec", "SDD", "specification", "spec"

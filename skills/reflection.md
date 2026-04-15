@@ -117,3 +117,4 @@
 - The reflection should be concise but complete (2-4 sentences)
 - Always validate that `content` is not empty
 - Always generate valid JSON for the `content` field
+- **IMPORTANT**: The system now accepts plain text (Markdown) if JSON parsing fails - it will automatically wrap as a warning-type insight for backward compatibility
