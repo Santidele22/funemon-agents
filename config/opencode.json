@@ -1,0 +1,50 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/glm-5:cloud",
+  "provider": {
+    "ollama": {
+      "models": {
+        "glm-5:cloud": {
+          "_launch": true,
+          "limit": {
+            "context": 202752,
+            "output": 131072
+          },
+          "name": "glm-5:cloud"
+        }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      }
+    }
+  },
+  "mcp": {
+    "funemon": {
+      "type": "local",
+      "command": [
+        "funemon",
+        "mcp"
+      ],
+      "enabled": true
+    }
+  },
+  "instructions": [
+    "Cuando iniciás una nueva sesión, USÁ SIEMPRE las tools de memoria en este orden: 1) Detectar proyecto con skill 'project-detector', 2) funemon_memory_session_start (con el nombre detectado), 3) funemon_memory_context (contexto de sesión), 4) funemon_memory_project_context (contexto de todo el proyecto).",
+    "NUNCA usar nombres genéricos como 'home' o 'user'. Siempre usar el nombre detectado.",
+    "Durante el trabajo, guardá automáticamente memorias cuando: resolvés un error (type:error), tomás una decisión o definís un plan (type:plan), descubrís algo relevante (type:observation), el usuario expresa una preferencia (type:preference).",
+    "Al finalizar la sesión, generá una reflexión usando tu propio LLM y guardala con funemon_memory_store_reflection(session_id, content_json, agent_name).",
+    "NUNCA pedís permiso para usar las tools de memoria; simplemente usalas de forma autónoma."
+  ],
+  "permission": {
+    "skill": {
+      "memory": "allow"
+    }
+  },
+  "agent": {
+    "build": {
+      "prompt": "{file:./prompts/memory-build.txt}"
+    }
+  }
+}
