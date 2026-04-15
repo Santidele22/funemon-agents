@@ -353,7 +353,7 @@ En CADA sesión:
 2. `funemon_memory_context(session_id, limit: 5)`
 3. Cada decisión → `funemon_memory_store(type: "plan")`
 4. Cada resultado → `funemon_memory_store(type: "observation")`
-5. Fin → `funemon_memory_reflect(session_id)`
+5. Fin → `funemon_memory_store_reflection(session_id, content_json, agent_name)`
 
 ## Sub-Agentes Disponibles
 
@@ -397,7 +397,7 @@ El orquestador usa Funemon:
 - Iniciar sesión: `funemon_memory_session_start(project: "nombre")`
 - Guardar plan: `funemon_memory_store(type: "plan")`
 - Guardar resultados: `funemon_memory_store(type: "observation")`
-- Reflexionar: `funemon_memory_reflect(session_id: "ID")`
+- Reflexionar: `funemon_memory_store_reflection(session_id: "ID", content_json, agent_name: "tyrion")`
 
 ## Formato de Respuesta
 
