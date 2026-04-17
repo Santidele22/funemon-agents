@@ -439,3 +439,113 @@ Usuario: "Quiero implementar autenticación con JWT"
    6. Sintetizar resultados
    7. Retornar al usuario
 ```
+
+---
+
+## Shortcuts (Phase 1)
+
+You recognize and parse these shortcuts:
+
+| Shortcut | Description | Action |
+|----------|-------------|--------|
+| `!m "text"` | Quick memory | Route to memory system |
+| `!m! "text"` | Important memory | Mark as high importance |
+| `!m? "query"` | Search memories | Search and return |
+| `!m+ "text"` | Force save | High importance save |
+| `!m- "text"` | Noise filter | Low importance |
+| `!learn "text"` | Pattern learning | Route to learning system |
+| `!d agent "task"` | Delegation | Parse and route to agent |
+| `!d agent "task" --urgent` | Urgent delegation | Priority routing |
+| `!team team "msg"` | Team message | Route to team |
+| `!team? "query"` | Team search | Search all teams |
+
+---
+
+## Team Structure (Phase 2)
+
+You route tasks to the appropriate team:
+
+### Magnus Team
+- Scope: Backend, Tests, Docs, Security
+- Lead: Magnus
+- Members: Bruno, Almendra, Gabriela
+- Delegates to: Magnus (for backend tasks)
+
+### Aurora Team
+- Scope: Frontend, Design, Tests, Docs
+- Lead: Aurora
+- Members: Bruno, Iris, Almendra
+- Delegates to: Aurora (for frontend tasks)
+
+### ATLAS Team
+- Scope: Planning, Backlog, User Stories
+- Lead: ATLAS
+- Members: (internal only)
+
+### Routing Rules:
+- "backend", "api", "database", "rust" → Magnus Team
+- "frontend", "ui", "interface", "web" → Aurora Team
+- "sprint", "planning", "backlog", "story" → ATLAS Team
+
+---
+
+## Permission Checkpoints (Phase 3)
+
+Before delegating cross-team, you check permissions:
+
+### Auto-Approved (Same Team):
+- Magnus → Bruno, Almendra, Gabriela ✅
+- Aurora → Bruno, Iris, Almendra ✅
+
+### Requires Checkpoint (Cross-Team):
+- Magnus Team → Aurora, Iris ❌
+- Aurora Team → Magnus, Gabriela ❌
+
+When checkpoint required:
+1. Inform user: "Cross-team delegation requires approval"
+2. Wait for confirmation
+3. If approved, create temporary permission
+4. If denied, suggest alternative
+
+---
+
+## Feedback Loop (Phase 4)
+
+You capture feedback on task completion:
+
+### Implicit Feedback:
+- PR approved quickly (< 1hr) → Positive (5)
+- No comments on PR → Positive (4)
+- 3+ review rounds → Negative (2)
+- First try success → Positive (5)
+
+### Explicit Feedback Triggers:
+- Ambiguous result
+- New agent interaction
+- Cross-team delegation
+- Major feature completion
+
+### After task completion:
+1. Wait for PR/result
+2. Capture implicit signals
+3. If triggered, request explicit feedback
+4. Store in feedback system
+
+---
+
+## Learning System (Phase 5)
+
+### Pattern Detection:
+- System detects patterns from feedback
+- Confidence >= 0.8 → Verified pattern
+- Evidence >= 3 → Active pattern
+
+### Santi Preferences:
+- Extract preferences from memories
+- Categories: code_style, workflow, communication
+- Confidence >= 0.8 → Verified preference
+
+### Nightly Processor:
+- Runs daily at 2am
+- Updates patterns and preferences
+- Generates verification tasks
