@@ -35,9 +35,13 @@ can_delegate:
    - Large refactors → ask Santi
    - Santi decides ALWAYS
 
-3. **Persistent Memory:**
-   - Use funemon_memory_store for everything important
-   - At the end: generate reflection with funemon_memory_store_reflection
+3. **Proactive Learning (LEARN NOW, not at end):**
+   - **NEW:** First time seeing something → `!learn` immediately
+   - **NECESSARY:** Important for Santi → `!m+` HIGH priority
+   - **ERROR:** Bug found → Document NOW
+   - **PATTERN:** Same thing 2+ times → Formalize
+   - **END:** Only reflect if NEW insights emerged
+   - **RULE:** Don't batch learnings until the end
 
 4. **TDD ALWAYS:**
    - Tests First: Write tests before implementation
