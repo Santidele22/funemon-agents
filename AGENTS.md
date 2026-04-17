@@ -313,6 +313,31 @@ EOF
 - Incluir summary de cambios
 - Indicar que requiere aprobación para merge
 
+## Shortcuts
+
+### Memory Shortcuts
+| Shortcut | Syntax | Description |
+|----------|--------|-------------|
+| Quick Memory | `!m "text"` | Store with auto-categorization |
+| Important | `!m! "text"` | Mark as learned pattern |
+| Search | `!m? "query"` | Search memories |
+| Force Save | `!m+ "text"` | High importance |
+| Filter | `!m- "text"` | Low importance (noise) |
+
+### Learning Shortcuts
+| Shortcut | Syntax | Description |
+|----------|--------|-------------|
+| Learn | `!learn "text"` | Direct to learned patterns |
+| Preference | `!learn "Santi prefers X"` | Store as preference |
+
+### Delegation Shortcuts
+| Shortcut | Syntax | Description |
+|----------|--------|-------------|
+| Delegate | `!d agent "task"` | Simple delegation |
+| Urgent | `!d agent "task" --urgent` | High priority |
+| Team | `!team team "msg"` | Share with team |
+| Team Search | `!team? "query"` | Search all teams |
+
 ## Sub-Agentes Disponibles
 
 | Agente | Triggers | Scope | Role |
@@ -324,6 +349,50 @@ EOF
 | Bruno | "test", "qa", "coverage", "testing" | Quality Assurance | **Writes tests, ensures quality** |
 | Almendra | "docs", "documentación", "readme" | Documentation | **Creates and maintains documentation** |
 | Gabriela | "security", "seguridad", "audit" | Security | **Performs security reviews** |
+
+## Team Structure
+
+### Magnus Team
+```
+Lead: Magnus
+Scope: Backend Development, Tests, Documentation, Security
+Members: Bruno (QA), Almendra (Docs), Gabriela (Security)
+Internal Agents: Magnus, Bruno, Almendra, Gabriela
+
+Permissions:
+- Can delegate internally without approval ✅
+- Needs checkpoint for: Aurora, Iris ❌
+```
+
+### Aurora Team
+```
+Lead: Aurora
+Scope: Frontend Development, Design, Tests, Documentation
+Members: Bruno (QA), Iris (Design), Almendra (Docs)
+Internal Agents: Aurora, Bruno, Iris, Almendra
+
+Permissions:
+- Can delegate internally without approval ✅
+- Needs checkpoint for: Magnus, Gabriela ❌
+```
+
+### ATLAS Team
+```
+Lead: ATLAS
+Scope: Planning, Backlog, User Stories
+Members: ATLAS only (internal)
+Internal Agents: ATLAS
+
+Permissions:
+- Internal only, no external delegation ❌
+```
+
+### Cross-Team Permission Matrix
+| From \ To | Magnus | Bruno | Gabriela | Almendra | Aurora | Iris |
+|-----------|--------|-------|----------|----------|--------|------|
+| Magnus Team | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| Aurora Team | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| ATLAS Team | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 ## Skills por Agente
 
@@ -383,3 +452,15 @@ Si un agente necesita delegar a otro:
 - [Próximos pasos sugeridos]
 - [Otros agentes a Involucrar]
 ```
+
+## Implementation Status
+
+| Phase | Feature | Status |
+|-------|---------|--------|
+| ✅ Phase 1 | Shortcuts (!m, !d, !learn) | Implemented |
+| ✅ Phase 2 | Team Memory (Magnus, Aurora, ATLAS Teams) | Implemented |
+| ✅ Phase 3 | Permissions (Checkpoints, Matrix) | Implemented |
+| ✅ Phase 4 | Feedback Loop (Implicit/Explicit) | Implemented |
+| ✅ Phase 5 | Learning System (Patterns, Preferences) | Implemented |
+| 🔜 Phase 6 | Dashboard | Pending |
+| 🔜 Phase 7 | Skills Auto-Update | Pending |
