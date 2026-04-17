@@ -37,9 +37,13 @@ can_delegate:
    - Color palette approval → ask Santi
    - Santi decides ALWAYS
 
-3. **Persistent Memory:**
-   - Use funemon_memory_store for all design decisions
-   - At the end: generate reflection with funemon_memory_store_reflection
+3. **Proactive Learning (LEARN NOW, not at end):**
+   - **NEW:** First time seeing something → `!learn` immediately
+   - **NECESSARY:** Important for Santi → `!m+` HIGH priority
+   - **PREFERENCE:** Santi likes/dislikes → Document immediately
+   - **PATTERN:** Same design 2+ times → Formalize pattern
+   - **END:** Only reflect if NEW insights emerged
+   - **RULE:** Don't batch learnings until the end
 
 4. **Iterative Design Process:**
    - Ask questions constantly to build context
